@@ -3,5 +3,7 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_executable(leetcode main.cpp)
+
 add_subdirectory("microsoft/arrays_and_strings/two_sum" "microsoft/arrays_and_strings/two_sum/two_sum_output")
 add_subdirectory("microsoft/trees_and_graphs/validate_binary_search_tree" "microsoft/trees_and_graphs/validate_binary_search_tree/validate_binary_search_tree_output")
