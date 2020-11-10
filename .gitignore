@@ -1,0 +1,6 @@
+.gitignore
+.idea
+cmake-build-debug
+microsoft/trees_and_graphs/validate_binary_search_tree/validate_binary_search_tree_output/
+microsoft/arrays_and_strings/two_sum/two_sum_output/
+microsoft/trees_and_graphs/inorder_traversal/inorder_traversal_output/
