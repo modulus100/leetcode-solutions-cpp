@@ -1,6 +1,7 @@
 #include <iostream>
 #include <functional>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -25,6 +26,46 @@ public:
         if (node->val >= max || node->val <= min) return false;
         return isValidBST(node->left, min, node->val)
                && isValidBST(node->right, node->val, max);
+    }
+
+    bool isValidBSTRNonRecursive(TreeNode* root) {
+        stack<TreeNode*> stack;
+
+        int lastTested;
+        bool init = false;
+
+        if(!root)
+            return true;
+
+        stack.push(root);
+
+        while(!stack.empty()){
+            auto node = stack.top();
+            stack.pop();
+
+            if(!node->left && !node->right){
+                cout << node->val << " ";
+                if (init && lastTested >= node->val) return false;
+                init = true;
+                lastTested = node->val;
+                continue;
+            }
+
+            if(node->right)
+                stack.push(node->right);
+
+            (*node).right = nullptr;
+
+            stack.push(node);
+
+            if(node->left)
+                stack.push(node->left);
+
+            (*node).left = nullptr;
+        }
+
+        return true;
+
     }
 };
 
