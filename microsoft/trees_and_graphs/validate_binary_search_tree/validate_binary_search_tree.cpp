@@ -1,34 +1,25 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_map>
+#include "../../../shared/tree_node.cpp"
 
 using namespace std;
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> out(2);
-        unordered_map<int, int> map;
+    bool isValidBST(TreeNode* root) {
+        return isValidBST(root, LONG_MIN, LONG_MAX);
+    }
 
-        for (int i = 0; i < nums.size(); i++) {
-            int diff = target - nums[i];
-
-            if (map.count(diff)) {
-                out[0] = map[diff];
-                out[1] = i;
-                return out;
-            } else {
-                map[nums[i]] = i;
-            }
-        }
-
-        return out;
+    bool isValidBST(TreeNode* node, long min, long max) {
+        if (node == nullptr) return true;
+        if (node->val >= max || node->val <= min) return false;
+        return isValidBST(node->left, min, node->val)
+               && isValidBST(node->right, node->val, max);
     }
 };
 
 int main() {
     cout << "test" << endl;
-
     return 0;
 }
