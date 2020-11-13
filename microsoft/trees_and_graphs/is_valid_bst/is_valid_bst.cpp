@@ -20,20 +20,16 @@ public:
 
     bool isValidBSTRNonRecursive(TreeNode* root) {
         stack<TreeNode*> stack;
-
         int lastTested;
         bool init = false;
-
-        if(!root)
-            return true;
-
+        if (!root) return true;
         stack.push(root);
 
-        while(!stack.empty()){
+        while (!stack.empty()) {
             auto node = stack.top();
             stack.pop();
 
-            if(!node->left && !node->right){
+            if (!node->left && !node->right) {
                 cout << node->val << " ";
                 if (init && lastTested >= node->val) return false;
                 init = true;
@@ -41,21 +37,21 @@ public:
                 continue;
             }
 
-            if(node->right)
+            if (node->right) {
                 stack.push(node->right);
+            }
 
             (*node).right = nullptr;
-
             stack.push(node);
 
-            if(node->left)
+            if (node->left) {
                 stack.push(node->left);
+            }
 
             (*node).left = nullptr;
         }
 
         return true;
-
     }
 };
 
