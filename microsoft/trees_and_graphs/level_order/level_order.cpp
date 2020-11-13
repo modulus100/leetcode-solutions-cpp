@@ -51,26 +51,26 @@ public:
         vector<vector<int>> result;
         if (!root) return result;
         queue<TreeNode*> nodesQueue;
-        vector<int> levelValues;
-        int n;
-
         nodesQueue.push(root);
 
-        while(!nodesQueue.empty())
+        while (!nodesQueue.empty())
         {
-            n = nodesQueue.size();
+            vector<int> levelValues;
+            int n = nodesQueue.size();
 
-            while(n--)
+            while (n--)
             {
                 TreeNode* node = nodesQueue.front();
                 nodesQueue.pop();
                 levelValues.push_back(node->val);
 
-                if (node->left)
+                if (node->left) {
                     nodesQueue.push(node->left);
+                }
 
-                if (node->right)
+                if (node->right) {
                     nodesQueue.push(node->right);
+                }
             }
 
             result.push_back(levelValues);
